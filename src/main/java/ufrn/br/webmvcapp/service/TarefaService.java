@@ -16,9 +16,12 @@ public class TarefaService {
         this.repository = repository;
     }
 
-    public Tarefa salvar(String descricao, Boolean ativo){
-        Tarefa tarefa = new Tarefa(0l, descricao, ativo);
+    public Tarefa salvar(Tarefa tarefa){
         return repository.save(tarefa);
+    }
+
+    public void deletar(Long id){
+        repository.deleteById(id);
     }
 
     public List<Tarefa> listarTodos(){

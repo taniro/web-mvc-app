@@ -6,9 +6,34 @@
 </head>
 <body>
 
-<p>Hello World Estático</p>
+<h1> Dashboard de Tarefas</h1>
+<h3> <a href="/cadastro">Cadastrar Tarefa</a></h3>
 
-<p th:text="${username}"> Hello World Estático</p>
+<div th:if="${tarefas.isEmpty}">
+    <p> Ops, não existem tarefas cadastradas.</p>
+</div>
+
+<table th:unless="${tarefas.isEmpty}">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Descrição</th>
+            <th>Status</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each=" tarefa : ${tarefas}" th:object="${tarefa}">
+            <td th:text="*{id}"> ID</td>
+            <td th:text="*{descricao}"> Descrição</td>
+            <td th:text="*{ativo}"> Status</td>
+            <td>
+                <a th:href="@{'/deletar/' + *{id}}"> Deletar </a>
+                <a th:href="@{'/editar/' + *{id}}"> Editar </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 </body>
 </html>
