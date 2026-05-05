@@ -17,5 +17,11 @@ public class Tarefa {
     @GeneratedValue (strategy = GenerationType.AUTO)
     Long id;
     String descricao;
+    Integer prioridade = 0;
     Boolean ativo;
+
+    public Tarefa(String descricao, Boolean ativo) {
+        this.descricao = descricao;
+        this.ativo = ativo;
+    }
 }

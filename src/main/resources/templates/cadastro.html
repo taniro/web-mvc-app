@@ -6,14 +6,20 @@
 </head>
 <body>
 <form method="POST" action="#" th:action="@{/salvar}" th:object="${tarefa}">
-    <input type="text" name="descricao" th:field="*{descricao}"/> <br />
-    <select name="ativo" th:field="*{ativo}">
-        <option value="true"> Ativo
-        </option>
-        <option value="false">
-            Inativo
-        </option>
-    </select>
+    <label>
+        <input type="text" name="descricao" th:field="*{descricao}"/>
+    </label>
+    <p th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"> </p>
+    <br />
+    <label>
+        <select name="ativo" th:field="*{ativo}">
+            <option value="true"> Ativo
+            </option>
+            <option value="false">
+                Inativo
+            </option>
+        </select>
+    </label>
     <button type="submit">Enviar</button>
 </form>
 </body>
